@@ -5,44 +5,68 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculator</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="header"></div>
-    <div class="content">
+    <div class="header">
+      <div id="title">Calculator</div>
+    </div>
+
+    <div class="calculator-container">
       <div class="calculator">
         <div class="display-container">
-          <div class="history-display"></div>
-          <div class="main-display">0</div>
+          <div class="display history">
+            <div class="history-text">⠀</div>
+          </div>
+          <div class="display main">
+            <div class="main-text">0</div>
+          </div>
         </div>
+
         <div class="button-container">
-          <div class="operators-container">
-            <button class="operator" data-operator="+">+</button>
-            <button class="operator" data-operator="-">-</button>
-            <button class="operator" data-operator="x">x</button>
-            <button class="operator" data-operator="/">/</button>
+          <div class="row">
+            <button class="sign-toggle" data-operator="+/-">+/-</button>
+            <button class="number" data-num="0">0</button>
             <button class="dot" data-operator=".">.</button>
             <button class="equals" data-operator="=">=</button>
-            <button class="clear-all" data-operator="c">c</button>
-            <button class="clear-entry" data-operator="ce">ce</button>
-            <button class="backspace" data-operator="d"><=</button>
           </div>
-          <div class="numbers-container">
-            <button class="number" data-num="0">0</button>
+
+          <div class="row">
             <button class="number" data-num="1">1</button>
             <button class="number" data-num="2">2</button>
             <button class="number" data-num="3">3</button>
+            <button class="operator" data-operator="+">+</button>
+          </div>
+
+          <div class="row">
             <button class="number" data-num="4">4</button>
             <button class="number" data-num="5">5</button>
             <button class="number" data-num="6">6</button>
+            <button class="operator" data-operator="-">-</button>
+          </div>
+
+          <div class="row">
             <button class="number" data-num="7">7</button>
             <button class="number" data-num="8">8</button>
             <button class="number" data-num="9">9</button>
+            <button class="operator" data-operator="x">x</button>
+          </div>
+
+          <div class="row">
+            <button class="clear entry" data-operator="ce">ce</button>
+            <button class="clear all" data-operator="c">c</button>
+            <button class="backspace" data-operator="d">&#9003</button>
+            <button class="operator" data-operator="/">/</button>
           </div>
         </div>
       </div>
     </div>
+
     <div class="footer"></div>
   </body>
 </html>

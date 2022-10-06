@@ -4,20 +4,20 @@ let num2 = "";
 let mainDisplayText = "0";
 let historyDisplayText = "";
 
-const mainDisplay = document.querySelector(".main-display");
-const historyDisplay = document.querySelector(".history-display");
+const mainDisplay = document.querySelector(".main-text");
+const historyDisplay = document.querySelector(".history-text");
 
 const equals = document.querySelector(".equals");
 const dot = document.querySelector(".dot");
 const backspace = document.querySelector(".backspace");
 
-const clearA = document.querySelector(".clear-all");
-const clearE = document.querySelector(".clear-entry");
+const clearA = document.querySelector(".all");
+const clearE = document.querySelector(".entry");
 
 const operators = document.querySelectorAll(".operator");
 const numbers = document.querySelectorAll(".number");
 
-/*---Inputs---*/
+/*---INPUTS---*/
 
 equals.onclick = () => displayEquation(operate());
 dot.onclick = () => numSelection(".");
@@ -46,67 +46,154 @@ numbers.forEach((numButton) => {
 document.addEventListener("keydown", (e) => {
   if (e.shiftKey && e.key === "c") {
     clearA.click();
+    clearA.classList.toggle("pressed");
     return;
   }
 
   switch (e.key) {
     case "+":
       operators[0].click();
+      operators[0].classList.toggle("pressed");
       return;
     case "-":
       operators[1].click();
+      operators[1].classList.toggle("pressed");
       return;
     case "x":
     case "*":
       operators[2].click();
+      operators[2].classList.toggle("pressed");
       break;
     case "/":
       operators[3].click();
+      operators[3].classList.toggle("pressed");
       break;
     case "=":
     case "Enter":
       equals.click();
+      equals.classList.toggle("pressed");
       break;
     case ".":
       dot.click();
+      dot.classList.toggle("pressed");
       break;
     case "Backspace":
       backspace.click();
+      backspace.classList.toggle("pressed");
       break;
     case "c":
       clearE.click();
+      clearE.classList.toggle("pressed");
       break;
     case "0":
       numbers[0].click();
+      numbers[0].classList.toggle("pressed");
       break;
     case "1":
       numbers[1].click();
+      numbers[1].classList.toggle("pressed");
       break;
     case "2":
       numbers[2].click();
+      numbers[2].classList.toggle("pressed");
       break;
     case "3":
       numbers[3].click();
+      numbers[3].classList.toggle("pressed");
       break;
     case "4":
       numbers[4].click();
+      numbers[4].classList.toggle("pressed");
       break;
     case "5":
       numbers[5].click();
+      numbers[5].classList.toggle("pressed");
       break;
     case "6":
       numbers[6].click();
+      numbers[6].classList.toggle("pressed");
+      break;
     case "7":
       numbers[7].click();
+      numbers[7].classList.toggle("pressed");
       break;
     case "8":
       numbers[8].click();
+      numbers[8].classList.toggle("pressed");
       break;
     case "9":
       numbers[9].click();
+      numbers[9].classList.toggle("pressed");
       break;
   }
 });
+
+document.addEventListener("keyup", (e) => {
+  if (e.shiftKey && e.key === "c") {
+    clearA.classList.toggle("pressed");
+    return;
+  }
+
+  switch (e.key) {
+    case "+":
+      operators[0].classList.toggle("pressed");
+      return;
+    case "-":
+      operators[1].classList.toggle("pressed");
+      return;
+    case "x":
+    case "*":
+      operators[2].classList.toggle("pressed");
+      break;
+    case "/":
+      operators[3].classList.toggle("pressed");
+      break;
+    case "=":
+    case "Enter":
+      equals.classList.toggle("pressed");
+      break;
+    case ".":
+      dot.classList.toggle("pressed");
+      break;
+    case "Backspace":
+      backspace.classList.toggle("pressed");
+      break;
+    case "c":
+      clearE.classList.toggle("pressed");
+      break;
+    case "0":
+      numbers[0].classList.toggle("pressed");
+      break;
+    case "1":
+      numbers[1].classList.toggle("pressed");
+      break;
+    case "2":
+      numbers[2].classList.toggle("pressed");
+      break;
+    case "3":
+      numbers[3].classList.toggle("pressed");
+      break;
+    case "4":
+      numbers[4].classList.toggle("pressed");
+      break;
+    case "5":
+      numbers[5].classList.toggle("pressed");
+      break;
+    case "6":
+      numbers[6].classList.toggle("pressed");
+      break;
+    case "7":
+      numbers[7].classList.toggle("pressed");
+      break;
+    case "8":
+      numbers[8].classList.toggle("pressed");
+      break;
+    case "9":
+      numbers[9].classList.toggle("pressed");
+      break;
+  }
+});
+
 function numSelection(numSelected) {
   if (!operator) {
     //If the operator hasn't been selected update num1
@@ -122,7 +209,7 @@ function updateNum(num, numSelected) {
   if (numSelected === "d") return num.slice(0, -1);
   if (numSelected === "." && num.includes(".")) return num;
 
-  if (num === "0") {
+  if (num === "0" || !num) {
     if (numSelected === ".") return (num = "0.");
     return (num = numSelected);
   }
@@ -136,7 +223,7 @@ function operatorSelection(op) {
   displayMain();
 }
 
-/*---Display---*/
+/*---DISPLAY---*/
 
 function displayMain() {
   mainDisplayText = `${num1} ${operator} ${num2}`;
@@ -169,7 +256,7 @@ function clearDisplay() {
   historyDisplay.textContent = historyDisplayText;
 }
 
-/*---Calculate---*/
+/*---CALCULATE---*/
 
 function operate(operand1, operand2) {
   operand1 = parseFloat(num1);
@@ -194,7 +281,7 @@ function operate(operand1, operand2) {
   }
 }
 
-/*---Reset---*/
+/*---RESET---*/
 
 function clearAll() {
   resetVariables("0");
