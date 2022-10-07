@@ -21,13 +21,7 @@ const numbers = document.querySelectorAll(".number");
 
 equals.onclick = () => displayEquation(operate());
 dot.onclick = () => numSelection(".");
-backspace.onclick = () => {
-  if (operator && !num2) {
-    operatorSelection("d");
-    return;
-  }
-  numSelection("d");
-};
+backspace.onclick = () => onDelete();
 clearA.onclick = () => clearAll();
 clearE.onclick = () => clearEntry();
 
@@ -194,33 +188,45 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
-function numSelection(numSelected) {
+function numSelection(value) {
   if (!operator) {
     //If the operator hasn't been selected update num1
-    num1 = updateNum(num1, numSelected);
+    num1 = updateNum(num1, value);
   } else {
-    num2 = updateNum(num2, numSelected);
+    num2 = updateNum(num2, value);
   }
   displayMain();
 }
 
-function updateNum(num, numSelected) {
-  if (num.length > 9) return num;
-  if (numSelected === "d") return num.slice(0, -1);
-  if (numSelected === "." && num.includes(".")) return num;
+function updateNum(num, value) {
+  if (num.length >= 9) return num;
+  if (value === "." && num.includes(".")) return num;
 
-  if (num === "0" || !num) {
-    if (numSelected === ".") return (num = "0.");
-    return (num = numSelected);
-  }
+  if (value === ".") num += ".";
+  else if (num === "0" || !num) num = value;
+  else num += value;
 
-  return (num += numSelected);
+  return num;
 }
 
 function operatorSelection(op) {
-  if (op === "d") operator = "";
-  else operator = op;
+  operator = op;
   displayMain();
+}
+
+function onDelete() {
+  if (num2) num2 = deleteNum(num2);
+  else if (operator) operator = "";
+  else num1 = deleteNum(num1);
+
+  displayMain();
+}
+
+function deleteNum(num) {
+  num = num.slice(0, -1);
+  if (!num) num = "0";
+
+  return num;
 }
 
 /*---DISPLAY---*/
@@ -241,7 +247,7 @@ function displayEquation(answer) {
   answer = +answer.toFixed(8);
   displayHistory();
   displayAnswer(answer);
-  resetVariables(answer);
+  resetVariables(`${answer}`);
 }
 
 function displayAnswer(a) {
