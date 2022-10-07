@@ -7,23 +7,26 @@ let historyDisplayText = "";
 const mainDisplay = document.querySelector(".main-text");
 const historyDisplay = document.querySelector(".history-text");
 
-const equals = document.querySelector(".equals");
-const dot = document.querySelector(".dot");
+const clearE = document.querySelector(".entry");
+const clearA = document.querySelector(".all");
 const backspace = document.querySelector(".backspace");
 
-const clearA = document.querySelector(".all");
-const clearE = document.querySelector(".entry");
+const sign = document.querySelector(".sign-toggle");
+const dot = document.querySelector(".dot");
+const equals = document.querySelector(".equals");
 
 const operators = document.querySelectorAll(".operator");
 const numbers = document.querySelectorAll(".number");
 
 /*---INPUTS---*/
 
-equals.onclick = () => displayEquation(operate());
-dot.onclick = () => numSelection(".");
-backspace.onclick = () => onDelete();
-clearA.onclick = () => clearAll();
 clearE.onclick = () => clearEntry();
+clearA.onclick = () => clearAll();
+backspace.onclick = () => onDelete();
+
+sign.onclick = () => signToggle();
+dot.onclick = () => numSelection(".");
+equals.onclick = () => displayEquation(operate());
 
 operators.forEach((opButton) => {
   opButton.addEventListener("click", (e) => {
@@ -188,6 +191,8 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
+/*---INPUT FUNCTIONS---*/
+
 function numSelection(value) {
   if (!operator) {
     //If the operator hasn't been selected update num1
@@ -199,7 +204,9 @@ function numSelection(value) {
 }
 
 function updateNum(num, value) {
-  if (num.length >= 9) return num;
+  let isNegative = 0;
+  if (num.includes("-")) isNegative = 1;
+  if (num.length >= 9 + isNegative) return num;
   if (value === "." && num.includes(".")) return num;
 
   if (value === ".") num += ".";
@@ -217,7 +224,7 @@ function operatorSelection(op) {
 function onDelete() {
   if (num2) num2 = deleteNum(num2);
   else if (operator) operator = "";
-  else num1 = deleteNum(num1);
+  else if (num1) num1 = deleteNum(num1);
 
   displayMain();
 }
@@ -227,6 +234,18 @@ function deleteNum(num) {
   if (!num) num = "0";
 
   return num;
+}
+
+function signToggle() {
+  if (!operator) {
+    if (num1.includes("-")) num1 = num1.slice(1);
+    else num1 = "-" + num1;
+  } else {
+    if (num2.includes("-")) num2 = num2.slice(1);
+    else num2 = "-" + num2;
+  }
+
+  displayMain();
 }
 
 /*---DISPLAY---*/
@@ -295,15 +314,11 @@ function clearAll() {
 }
 
 function clearEntry() {
-  if (num2) {
-    num2 = "";
-    displayMain();
-  } else if (operator) {
-    operator = "";
-    displayMain();
-  } else {
-    clearAll();
-  }
+  if (num2) num2 = "";
+  else if (operator) operator = "";
+  else if (num1) clearAll();
+
+  displayMain();
 }
 
 function resetVariables(num1Value) {
