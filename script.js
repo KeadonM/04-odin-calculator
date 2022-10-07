@@ -253,6 +253,7 @@ function signToggle() {
 function displayMain() {
   mainDisplayText = `${num1} ${operator} ${num2}`;
   mainDisplay.textContent = mainDisplayText;
+  checkWidth(mainDisplay);
 }
 
 function displayHistory() {
@@ -272,6 +273,7 @@ function displayEquation(answer) {
 function displayAnswer(a) {
   mainDisplayText = `${a}`;
   mainDisplay.textContent = mainDisplayText;
+  checkWidth(mainDisplay);
 }
 
 function clearDisplay() {
@@ -325,4 +327,49 @@ function resetVariables(num1Value) {
   num1 = num1Value;
   num2 = "";
   operator = "";
+}
+
+function checkWidth(text) {
+  let textWidth = text.offsetWidth;
+  let fontSize = window.getComputedStyle(text).fontSize;
+  const container = text.parentElement;
+  const containerWidth = container.offsetWidth;
+
+  if (textWidth >= containerWidth)
+    shrinkFont(text, fontSize, textWidth, containerWidth);
+  if (textWidth < containerWidth * 0.95)
+    increaseFont(text, fontSize, textWidth, containerWidth);
+}
+
+function shrinkFont(text, fontSize, textWidth, containerWidth) {
+  do {
+    textWidth = text.offsetWidth;
+    fontSize = window.getComputedStyle(text).fontSize;
+
+    if (textWidth >= containerWidth) {
+      fontSize = parseFloat(fontSize) * 0.95;
+      text.style.fontSize = `${fontSize}px`;
+    }
+  } while (textWidth >= containerWidth);
+
+  console.log(
+    `TextWidth: ${textWidth} ContainerWidth: ${containerWidth} FontSize: ${fontSize}`
+  );
+}
+
+function increaseFont(text, fontSize, textWidth, containerWidth) {
+  while (textWidth < containerWidth * 0.95 && fontSize != 40) {
+    textWidth = text.offsetWidth;
+    fontSize = window.getComputedStyle(text).fontSize;
+
+    if (textWidth < containerWidth * 0.95) {
+      fontSize = parseFloat(fontSize) * 1.05;
+      if (fontSize > 40) fontSize = 40;
+      text.style.fontSize = `${fontSize}px`;
+    }
+  }
+
+  console.log(
+    `TextWidth: ${textWidth} ContainerWidth: ${containerWidth} FontSize: ${fontSize}`
+  );
 }
