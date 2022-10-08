@@ -30,6 +30,7 @@ equals.onclick = () => displayEquation(operate());
 
 operators.forEach((opButton) => {
   opButton.addEventListener("click", (e) => {
+    if (num2) equals.onclick();
     operatorSelection(e.target.getAttribute("data-operator"));
   });
 });
@@ -231,7 +232,7 @@ function onDelete() {
 
 function deleteNum(num) {
   num = num.slice(0, -1);
-  if (!num) num = "0";
+  if (!num && !operator) num = "0";
 
   return num;
 }
@@ -351,10 +352,6 @@ function shrinkFont(text, fontSize, textWidth, containerWidth) {
       text.style.fontSize = `${fontSize}px`;
     }
   } while (textWidth >= containerWidth);
-
-  console.log(
-    `TextWidth: ${textWidth} ContainerWidth: ${containerWidth} FontSize: ${fontSize}`
-  );
 }
 
 function increaseFont(text, fontSize, textWidth, containerWidth) {
@@ -368,8 +365,4 @@ function increaseFont(text, fontSize, textWidth, containerWidth) {
       text.style.fontSize = `${fontSize}px`;
     }
   }
-
-  console.log(
-    `TextWidth: ${textWidth} ContainerWidth: ${containerWidth} FontSize: ${fontSize}`
-  );
 }

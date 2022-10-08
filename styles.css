@@ -1,8 +1,10 @@
 :root {
-  --primary-dark: rgb(40, 40, 40);
-  --primary-light: #ededed;
-  --secondary-dark: rgb(100, 100, 100);
-  --secondary-light: #d8d8d8;
+  --primary-dark: rgb(125, 125, 125);
+  --primary-light: #dddddd;
+  --secondary-dark: rgb(150, 150, 150);
+  --secondary-light: #b8b8b8;
+
+  --background-color: #ededed;
 }
 
 * {
@@ -16,13 +18,9 @@ body {
   flex-direction: column;
   align-items: center;
   font-family: "Roboto", sans-serif;
-  background-color: var(--primary-light);
+  background-color: var(--background-color);
   width: 100vw;
   height: 100vh;
-}
-
-.border {
-  border: solid 1px red;
 }
 
 /*---HEADER---*/
@@ -30,8 +28,35 @@ body {
 #title {
   font-size: 3rem;
   font-weight: 700;
-  margin: 24px;
+  margin-top: 96px;
   color: var(--primary-dark);
+}
+
+/*---FOOOTER---*/
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 24px;
+}
+
+#copyright {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--primary-dark);
+  text-decoration-line: none;
+  letter-spacing: 0.5px;
+}
+
+.fa-github {
+  margin-left: 4px;
+  color: var(--primary-dark);
+  font-size: 24px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.fa-github:hover {
+  transform: rotate(360deg) scale(1.2);
 }
 
 /*---CALCULATOR---*/
@@ -42,25 +67,19 @@ body {
   max-width: 496px;
   max-height: 696px;
   padding: 48px;
+
+  flex: 1 0 auto;
 }
 
 .calculator {
   display: flex;
   flex-direction: column;
   flex: auto;
-
   width: 100%;
   height: 100%;
-
   min-width: 250px;
   min-height: 375px;
-
-  /* min-width: 150px;
-  min-height: 300px;
-
-  max-width: 400px;
-  max-height: 800px; */
-
+  background-color: var(--secondary-light);
   border: solid 3px var(--primary-dark);
   border-radius: 8px;
   padding: 12px;
@@ -70,7 +89,8 @@ body {
   display: flex;
   flex-direction: column;
   flex: auto;
-
+  height: 16%;
+  background-color: var(--background-color);
   border: solid 3px var(--primary-dark);
   border-radius: 8px;
   padding: 8px;
@@ -114,8 +134,9 @@ button {
   transition: 0.07s;
   width: 23%;
   height: 100%;
-
   font-size: 1.5rem;
+  color: var(--primary-dark);
+  background-color: var(--primary-light);
   border: solid 3px var(--primary-dark);
   border-radius: 6px;
 }
