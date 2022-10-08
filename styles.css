@@ -80,6 +80,7 @@ body {
   min-width: 250px;
   min-height: 375px;
   background-color: var(--secondary-light);
+  box-shadow: inset 0px 0px 8px var(--primary-dark);
   border: solid 3px var(--primary-dark);
   border-radius: 8px;
   padding: 12px;
@@ -91,6 +92,7 @@ body {
   flex: auto;
   height: 16%;
   background-color: var(--background-color);
+  box-shadow: inset 0px 0px 8px var(--primary-dark);
   border: solid 3px var(--primary-dark);
   border-radius: 8px;
   padding: 8px;
@@ -143,18 +145,37 @@ button {
 
 button:hover {
   scale: 1.04;
-  color: var(--primary-light);
-  background-color: var(--secondary-dark);
+  background-color: rgb(241, 241, 241);
+  box-shadow: 3px 3px 8px var(--primary-dark);
+}
+
+.operator:hover {
+  background-color: rgb(245, 198, 255);
+}
+
+.equals:hover {
+  background-color: rgb(198, 244, 255);
+}
+
+.backspace:hover {
+  background-color: rgb(253, 182, 182);
+}
+
+.clear:hover {
+  background-color: rgb(253, 210, 170);
 }
 
 button:active {
   scale: 0.96;
-  background-color: var(--primary-dark);
+  box-shadow: inset 0px 0px 12px var(--primary-dark);
+}
+
+.number:active {
   color: var(--secondary-light);
 }
 
 .pressed {
   scale: 0.96;
-  background-color: var(--primary-dark);
+  box-shadow: inset 0px 0px 12px var(--primary-dark);
   color: var(--secondary-light);
 }
