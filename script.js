@@ -330,6 +330,8 @@ function resetVariables(num1Value) {
   operator = "";
 }
 
+/*---FONTSIZE UPDATING---*/
+
 function checkWidth(text) {
   let textWidth = text.offsetWidth;
   let fontSize = window.getComputedStyle(text).fontSize;
@@ -343,7 +345,7 @@ function checkWidth(text) {
 }
 
 function shrinkFont(text, fontSize, textWidth, containerWidth) {
-  do {
+  while (textWidth >= containerWidth) {
     textWidth = text.offsetWidth;
     fontSize = window.getComputedStyle(text).fontSize;
 
@@ -351,7 +353,7 @@ function shrinkFont(text, fontSize, textWidth, containerWidth) {
       fontSize = parseFloat(fontSize) * 0.95;
       text.style.fontSize = `${fontSize}px`;
     }
-  } while (textWidth >= containerWidth);
+  }
 }
 
 function increaseFont(text, fontSize, textWidth, containerWidth) {
