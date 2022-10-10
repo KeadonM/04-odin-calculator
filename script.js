@@ -50,78 +50,42 @@ document.addEventListener("keydown", (e) => {
 
   switch (e.key) {
     case "+":
-      operators[0].click();
-      operators[0].classList.toggle("pressed");
+      pressKey(operators[0], true);
       return;
     case "-":
-      operators[1].click();
-      operators[1].classList.toggle("pressed");
+      pressKey(operators[1], true);
       return;
     case "x":
     case "*":
-      operators[2].click();
-      operators[2].classList.toggle("pressed");
+      pressKey(operators[2], true);
       break;
     case "/":
-      operators[3].click();
-      operators[3].classList.toggle("pressed");
+      pressKey(operators[3], true);
       break;
     case "=":
     case "Enter":
-      equals.click();
-      equals.classList.toggle("pressed");
+      pressKey(equals, true);
       break;
     case ".":
-      dot.click();
-      dot.classList.toggle("pressed");
+      pressKey(equals, true);
       break;
     case "Backspace":
-      backspace.click();
-      backspace.classList.toggle("pressed");
+      pressKey(backspace, true);
       break;
     case "c":
-      clearE.click();
-      clearE.classList.toggle("pressed");
+      pressKey(clearE, true);
       break;
     case "0":
-      numbers[0].click();
-      numbers[0].classList.toggle("pressed");
-      break;
     case "1":
-      numbers[1].click();
-      numbers[1].classList.toggle("pressed");
-      break;
     case "2":
-      numbers[2].click();
-      numbers[2].classList.toggle("pressed");
-      break;
     case "3":
-      numbers[3].click();
-      numbers[3].classList.toggle("pressed");
-      break;
     case "4":
-      numbers[4].click();
-      numbers[4].classList.toggle("pressed");
-      break;
     case "5":
-      numbers[5].click();
-      numbers[5].classList.toggle("pressed");
-      break;
     case "6":
-      numbers[6].click();
-      numbers[6].classList.toggle("pressed");
-      break;
     case "7":
-      numbers[7].click();
-      numbers[7].classList.toggle("pressed");
-      break;
     case "8":
-      numbers[8].click();
-      numbers[8].classList.toggle("pressed");
-      break;
     case "9":
-      numbers[9].click();
-      numbers[9].classList.toggle("pressed");
+      pressKey(numbers[e.key], true);
       break;
   }
 });
@@ -134,63 +98,51 @@ document.addEventListener("keyup", (e) => {
 
   switch (e.key) {
     case "+":
-      operators[0].classList.toggle("pressed");
+      pressKey(operators[0], false);
       return;
     case "-":
-      operators[1].classList.toggle("pressed");
+      pressKey(operators[1], false);
       return;
     case "x":
     case "*":
-      operators[2].classList.toggle("pressed");
+      pressKey(operators[2], false);
       break;
     case "/":
-      operators[3].classList.toggle("pressed");
+      pressKey(operators[3], false);
       break;
     case "=":
     case "Enter":
-      equals.classList.toggle("pressed");
+      pressKey(equals, false);
       break;
     case ".":
-      dot.classList.toggle("pressed");
+      pressKey(dot, false);
       break;
     case "Backspace":
-      backspace.classList.toggle("pressed");
+      pressKey(backspace, false);
       break;
     case "c":
-      clearE.classList.toggle("pressed");
+      pressKey(clearE, false);
       break;
     case "0":
-      numbers[0].classList.toggle("pressed");
-      break;
     case "1":
-      numbers[1].classList.toggle("pressed");
-      break;
     case "2":
-      numbers[2].classList.toggle("pressed");
-      break;
     case "3":
-      numbers[3].classList.toggle("pressed");
-      break;
     case "4":
-      numbers[4].classList.toggle("pressed");
-      break;
     case "5":
-      numbers[5].classList.toggle("pressed");
-      break;
     case "6":
-      numbers[6].classList.toggle("pressed");
-      break;
     case "7":
-      numbers[7].classList.toggle("pressed");
-      break;
     case "8":
-      numbers[8].classList.toggle("pressed");
-      break;
     case "9":
-      numbers[9].classList.toggle("pressed");
+      console.log("up " + e.key);
+      pressKey(numbers[e.key], false);
       break;
   }
 });
+
+function pressKey(button, down) {
+  if (down) button.click();
+  button.classList.toggle("pressed");
+}
 
 /*---INPUT FUNCTIONS---*/
 
