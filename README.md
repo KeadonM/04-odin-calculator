@@ -1,6 +1,6 @@
 # Calculator
 
-This is a simple calculator project developed to practice the fundamentals of HTML, CSS and JavaScript.
+This is a simple calculator project developed to practice the fundamentals of HTML, CSS, and JavaScript.
 
 This was an [assignment](https://www.theodinproject.com/courses/foundations/lessons/calculator) from The Odin Project.
 
