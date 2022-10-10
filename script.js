@@ -6,15 +6,12 @@ let historyDisplayText = "";
 
 const mainDisplay = document.querySelector(".main-text");
 const historyDisplay = document.querySelector(".history-text");
-
 const clearE = document.querySelector(".entry");
 const clearA = document.querySelector(".all");
 const backspace = document.querySelector(".backspace");
-
 const sign = document.querySelector(".sign-toggle");
 const dot = document.querySelector(".dot");
 const equals = document.querySelector(".equals");
-
 const operators = document.querySelectorAll(".operator");
 const numbers = document.querySelectorAll(".number");
 
@@ -23,7 +20,6 @@ const numbers = document.querySelectorAll(".number");
 clearE.onclick = () => clearEntry();
 clearA.onclick = () => clearAll();
 backspace.onclick = () => onDelete();
-
 sign.onclick = () => signToggle();
 dot.onclick = () => numSelection(".");
 equals.onclick = () => displayEquation(operate());
