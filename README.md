@@ -56,4 +56,4 @@ The most challenging part of this project was using nested flexboxes to make the
 
 👤 **Keadon Mitchell**
 
-- GitHub: [KeadonM](https://github.com/keaddonm)
+- GitHub: [KeadonM](https://github.com/keadonm)
