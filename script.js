@@ -43,8 +43,7 @@ numbers.forEach((numButton) => {
 
 document.addEventListener("keydown", (e) => {
   if (e.shiftKey && e.key === "c") {
-    clearA.click();
-    clearA.classList.toggle("pressed");
+    pressKey(clearA, true);
     return;
   }
 
@@ -92,7 +91,7 @@ document.addEventListener("keydown", (e) => {
 
 document.addEventListener("keyup", (e) => {
   if (e.shiftKey && e.key === "c") {
-    clearA.classList.toggle("pressed");
+    pressKey(clearA, false);
     return;
   }
 
